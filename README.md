@@ -1,4 +1,6 @@
-# rollup-plugin-bundle-worker
+(This is a fork of https://github.com/hughsk/rollup-plugin-bundle-worker, which is also a fork of https://github.com/andyearnshaw/rollup-plugin-bundle-worker [original code])
+
+# rollup-plugin-inline-worker
 
 Bundles a single JS file alongside your main source code as the source for a
 Web Worker. Provides a fallback for running the code in the main thread if the
@@ -7,17 +9,17 @@ browser does not support creating Workers from blobs.
 ### Getting started
 
 ```
-npm install rollup-plugin-bundle-worker
+npm install rollup-plugin-inline-worker
 ```
 
 Require the plugin and add it to your configuration:
 
 ```javascript
-import bundleWorker from 'rollup-plugin-bundle-worker';
+import inlineWorker from 'rollup-plugin-inline-worker';
 
 export default {
     entry: 'src/main.js',
-    plugins: [ bundleWorker() ],
+    plugins: [ inlineWorker() ],
     format: 'umd'
 };
 ```
@@ -43,13 +45,13 @@ receive an error that the preset cannot be found for the worker file. Instead,
 you should manually require the preset and pass it to the Babel configuration:
 
 ```javascript
-import bundleWorker from 'rollup-plugin-bundle-worker';
+import inlineWorker from 'rollup-plugin-inline-worker';
 import babel from 'rollup-plugin-babel';
 import preset2015 from 'babel-preset-es2015-rollup';
 
 export default {
     entry: 'src/main.js',
-    plugins: [ bundleWorker(), babel({ presets: [ preset2015 ]}) ],
+    plugins: [ inlineWorker(), babel({ presets: [ preset2015 ]}) ],
     format: 'umd'
 };
 ```
